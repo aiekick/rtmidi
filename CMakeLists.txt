@@ -226,12 +226,12 @@ string(REPLACE ";" " " api "${API_DEFS}")
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/rtmidi.pc.in" "rtmidi.pc" @ONLY)
 
 # Add install rule.
-install(TARGETS ${LIB_TARGETS}
-        EXPORT RtMidiTargets
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+##install(TARGETS ${LIB_TARGETS}
+##        EXPORT RtMidiTargets
+##        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+##        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+##        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+##        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # Store the package in the user registry.
 export(PACKAGE RtMidi)
@@ -240,34 +240,34 @@ export(PACKAGE RtMidi)
 set(RTMIDI_CMAKE_DESTINATION share/rtmidi)
 
 # Create CMake configuration export file.
-if(NEED_PTHREAD)
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/RtMidiConfig.cmake "find_package(Threads REQUIRED)\n")
-endif()
+##if(NEED_PTHREAD)
+##  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/RtMidiConfig.cmake "find_package(Threads REQUIRED)\n")
+##endif()
 
-file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/RtMidiConfig.cmake "include(\${CMAKE_CURRENT_LIST_DIR}/RtMidiTargets.cmake)")
+##file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/RtMidiConfig.cmake "include(\${CMAKE_CURRENT_LIST_DIR}/RtMidiTargets.cmake)")
 
 # Install CMake configuration export file.
-install(FILES ${CMAKE_BINARY_DIR}/RtMidiConfig.cmake
-        DESTINATION ${RTMIDI_CMAKE_DESTINATION})
+##install(FILES ${CMAKE_BINARY_DIR}/RtMidiConfig.cmake
+##        DESTINATION ${RTMIDI_CMAKE_DESTINATION})
 
 # Export library target (build-tree).
-export(EXPORT RtMidiTargets
-       NAMESPACE RtMidi::)
+##export(EXPORT RtMidiTargets
+##       NAMESPACE RtMidi::)
 
 # Export library target (install-tree).
-install(EXPORT RtMidiTargets
-        DESTINATION ${RTMIDI_CMAKE_DESTINATION}
-        NAMESPACE RtMidi::)
+##install(EXPORT RtMidiTargets
+##        DESTINATION ${RTMIDI_CMAKE_DESTINATION}
+##        NAMESPACE RtMidi::)
 
 # Configure uninstall target.
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/RtMidiConfigUninstall.cmake.in"
-    "${CMAKE_BINARY_DIR}/RtMidiConfigUninstall.cmake" @ONLY)
+##configure_file(
+##    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/RtMidiConfigUninstall.cmake.in"
+##    "${CMAKE_BINARY_DIR}/RtMidiConfigUninstall.cmake" @ONLY)
 
 # Create uninstall target.
-add_custom_target(${RTMIDI_TARGETNAME_UNINSTALL}
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/RtMidiConfigUninstall.cmake)
+##add_custom_target(${RTMIDI_TARGETNAME_UNINSTALL}
+##    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/RtMidiConfigUninstall.cmake)
 
-install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/rtmidi.pc
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+##install(
+##    FILES ${CMAKE_CURRENT_BINARY_DIR}/rtmidi.pc
+##    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
